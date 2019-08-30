@@ -6,7 +6,7 @@ $(function(){
  
  
 
- var singersArray = ["Sade", "Neyo", "Adele", "Alicia Keys", "Aretha"];
+ var singersArray = ["Sade", "Adele", "Alicia Keys", "Aretha", "John Legend", "Celine Dion"];
  
 
  function populateButtons(singersArray, classToAdd, areaToAddTo){
@@ -31,7 +31,7 @@ $(function(){
     })
 
     .done(function(response){
-            for(var i = 0; i < response.data.length; i++){
+        for(var i = 0; i < response.data.length; i++){
             var searchDiv = $('<div class="search-item">');
             var rating = response.data[i].rating;
             var p = $("<p>").text('Rating: ' + rating);
@@ -42,11 +42,14 @@ $(function(){
             image.attr('data-still', still);
             image.attr('data-animated', animated);
             image.attr('data-state', 'still');
-            image.addClass('searchImage');
+            image.addClass('searchImage'); 
            
-            searchDiv.append(p);
+           
             searchDiv.append(image);
+            searchDiv.append(p);
             $('#searches').append(searchDiv);
+
+          
         }
         
     })

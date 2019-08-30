@@ -1,20 +1,40 @@
 
-h1 {
+
+#microphone {
   background-color: black;
   color: azure;
   text-align: center;
-  padding-top: 5%;
-  padding-bottom: 5%;
-  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif !important;
+  padding-top: 2%;
+  padding-bottom: 2%;
+  
 
 }
 
+label {
+  font: bold !important;
+}
 body {
   background-image:  url(../images/microphone.jpg);
-  background-image: repeating-linear-gradient();
+  background-size: 100%;
   font-family: Georgia, 'Times New Roman', Times, serif;
+  font: bold;
 }
 
 .container {
   background-color: peru;
+  
 }
+
+.searchButton {
+  padding: 2%;
+  color: goldenrod;
+  background-color: silver;
+}
+
+#addSinger {
+  background-color: silver;
+  color: goldenrod; 
+  padding: 2%;
+  font-size: 16px;
+}
+
