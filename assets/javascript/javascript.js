@@ -65,6 +65,7 @@ $(function(){
  
  $('#addSinger').on('click', function(){
     var newSearch = $('input').eq(0).val();
+    //var newSearch = $("#addSearch").val();
     singersArray.push(newSearch);
     populateButtons(singersArray, 'searchButton', '#button-view');
     return false;
