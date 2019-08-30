@@ -1,21 +1,26 @@
+
 $(function(){
     populateButtons(singersArray, 'searchButton', '#button-view');
-})
+    
+ })
+ 
+ 
 
-var singersArray = ["Sade", "Neyo", "Adele", "Alicia Keys", "Aretha"];
+ var singersArray = ["Sade", "Neyo", "Adele", "Alicia Keys", "Aretha"];
+ 
 
-function populateButtons(singersArray, classToAdd, areaToAddTo){
+ function populateButtons(singersArray, classToAdd, areaToAddTo){
     $(areaToAddTo).empty();
-    for(var i = 0; i < singersArray, classToAdd, areaToAddTo){
+    for(var i = 0; i < singersArray.length; i++){
         var a = $('<button>');
         a.addClass(classToAdd);
         a.attr('data-type', singersArray[i]);
         a.text(singersArray[i]);
         $(areaToAddTo).append(a);
-            }
-}
+    }
+ }
 
-$(document).on('clck', '.searchButton', function(){
+ $(document).on('click', '.searchButton', function(){
     $('#searches').empty();
     var type = $(this).data('type');
     var searchInput = $("#search-input").val();
@@ -26,13 +31,41 @@ $(document).on('clck', '.searchButton', function(){
     })
 
     .done(function(response){
-        console.log(response.data);
-        for(var i =0; i < response.data.length; i++){
+            for(var i = 0; i < response.data.length; i++){
             var searchDiv = $('<div class="search-item">');
             var rating = response.data[i].rating;
             var p = $("<p>").text('Rating: ' + rating);
             var animated = response.data[i].images.fixed_height.url;
+            var still = response.data[i].images.fixed_height_still.url;
             var image = $('<img>');
-            image.attr('srsc', still);
+            image.attr('src', still);
             image.attr('data-still', still);
+            image.attr('data-animated', animated);
+            image.attr('data-state', 'still');
             image.addClass('searchImage');
+           
+            searchDiv.append(p);
+            searchDiv.append(image);
+            $('#searches').append(searchDiv);
+        }
+        
+    })
+ })
+ 
+ $(document).on('click', '.searchImage', function(){
+    var state = $(this).attr('data-state');
+    if(state == 'still'){
+        $(this).attr('src', $(this).data('animated'));
+        $(this).attr('data-state', 'animated');
+    } else{
+        $(this).attr('src', $(this).data('still'));
+        $(this).attr('data-state', 'still');
+    }
+ })
+ 
+ $('#addSinger').on('click', function(){
+    var newSearch = $('input').eq(0).val();
+    singersArray.push(newSearch);
+    populateButtons(singersArray, 'searchButton', '#button-view');
+    return false;
+ })
