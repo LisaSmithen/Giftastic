@@ -1,21 +1,21 @@
 
 $(function(){
-    populateButtons(singersArray, 'searchButton', '#button-view');
+    populateButtons(topics, 'searchButton', '#button-view');
     
  })
  
  
 
- var singersArray = ["Sade", "Adele", "Alicia Keys", "Aretha", "John Legend", "Celine Dion"];
+ var topics = ["Sade", "Adele", "Alicia Keys", "Aretha", "John Legend", "Celine Dion"];
  
 
- function populateButtons(singersArray, classToAdd, areaToAddTo){
+ function populateButtons(topics, classToAdd, areaToAddTo){
     $(areaToAddTo).empty();
-    for(var i = 0; i < singersArray.length; i++){
+    for(var i = 0; i < topics.length; i++){
         var a = $('<button>');
         a.addClass(classToAdd);
-        a.attr('data-type', singersArray[i]);
-        a.text(singersArray[i]);
+        a.attr('data-type', topics[i]);
+        a.text(topics[i]);
         $(areaToAddTo).append(a);
     }
  }
@@ -69,7 +69,7 @@ $(function(){
  $('#addSinger').on('click', function(){
     var newSearch = $('input').eq(0).val();
     //var newSearch = $("#addSearch").val();
-    singersArray.push(newSearch);
-    populateButtons(singersArray, 'searchButton', '#button-view');
+    topics.push(newSearch);
+    populateButtons(topics, 'searchButton', '#button-view');
     return false;
  })
